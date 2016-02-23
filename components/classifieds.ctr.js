@@ -6,15 +6,16 @@
         .controller("classifiedsCtrl", function($scope, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog) {
             
              classifiedsFactory.getClassifieds().then(function(classifieds){
-                $scope.classifieds = classifieds.data;                                      
+                $scope.classifieds = classifieds.data;  
+                $scope.categories = getCategories($scope.classifieds);
         });
         
         var contact = {
             name: "Papa Jo",
-            phone: "666-555-444",
+            phone: "666-555-4444",
             email: "papajo@github.com"
         }
-        
+                
         $scope.openSidebar = function() {
             $mdSidenav('left').open();
         }
@@ -62,6 +63,17 @@
                       .hideDelay(3000)
             ); 
         }
+        function getCategories(classifieds) {
+            var categories = [];
+            angular.forEach(classifieds, function(item) {
+                angular.forEach(item.categories, function(category) {
+                    categories.push(category); 
+                });
+            });
+            return _.uniq(categories);
+        }
+
+        
     });
     
 })();
