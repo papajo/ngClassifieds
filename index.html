@@ -25,6 +25,13 @@
         </div>
     </md-toolbar>
     
+    <!-- testing ui-route -->
+    <md-button ui-sref="one">go to stateone</md-button>
+    <md-button ui-sref="two">go to statetow</md-button>
+    <ui-view></ui-view>
+    
+    <!-- testing filters -->
+    
     <div class="filters" layout="row" layout-align="center center" ng-show="showFilters">
         <md-input-container layout="row">
             <label>Enter Search Term</label>
@@ -149,5 +156,6 @@
     <script src="components/classifieds.ctr.js"></script>
     <script src="components/classifieds.fac.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.5.1/lodash.min.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
 </body>
 </html>
