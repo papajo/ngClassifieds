@@ -9,7 +9,8 @@ angular
     $stateProvider
         .state('one', {
         url: '/stateone',
-        template: '<h1>State One</h1'
+        template: '<h1>{{ stateone.message }}</h1',
+        controller: 'stateOneCtrl as stateone'
     })
         .state('two', {
         url: '/statetwo',
@@ -19,5 +20,10 @@ angular
         url: '/more',
         template: '<p>This is the deeper state</p>'
     })
+})
+.controller('stateOneCtrl', function() {
+    //capture variable vm
+    var vm = this;
+    vm.message = 'Hey from State One';
 });
 
