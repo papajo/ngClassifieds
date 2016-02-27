@@ -23,6 +23,12 @@
                 vm.categories = getCategories(vm.classifieds);
         });
         
+        $scope.$on('newClassified', function(event, classified) {
+            classified.id = vm.classifieds.length + 1;
+            vm.classifieds.push(classified);
+            showToast('classified saved!')
+        });
+        
         var contact = {
             name: "Papa Jo",
             phone: "666-555-4444",
