@@ -29,6 +29,10 @@
             showToast('classified saved!')
         });
         
+        $scope.$on('editSaved', function(event, message) {
+            showToast(message);
+        })
+        
         var contact = {
             name: "Papa Jo",
             phone: "666-555-4444",
@@ -36,7 +40,8 @@
         }
                 
         function openSidebar() {
-            $state.go('classifieds.new')
+            console.log('test');
+            $state.go('classifieds.new');
         }
          function closeSidebar() {
             $mdSidenav('left').close();
@@ -51,9 +56,10 @@
             }
         }
         function editClassified(classified) {
-            vm.editing = true;
-            openSidebar();
-            vm.classified = classified;    
+            $state.go('classifieds.edit', {
+                id: classified.id, 
+                classified: classified
+            });  
         }
         function saveEdit() {
             vm.editing = false;
