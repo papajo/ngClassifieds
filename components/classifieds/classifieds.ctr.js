@@ -18,9 +18,9 @@
         vm.saveClassified = saveClassified;
         vm.saveEdit = saveEdit;
         
-        classifiedsFactory.getClassifieds().then(function(classifieds){
-                vm.classifieds = classifieds.data;  
-                vm.categories = getCategories(vm.classifieds);
+        vm.classifieds = classifiedsFactory.ref; 
+        vm.classifieds.$loaded().then(function(classifieds) {
+            vm.categories = getCategories(classifieds);
         });
         
         $scope.$on('newClassified', function(event, classified) {
@@ -97,8 +97,7 @@
             });
             return _.uniq(categories);
         }
-
-        
+       
     });
     
 })();
