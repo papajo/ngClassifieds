@@ -8,7 +8,8 @@
         vm.closeSidebar = closeSidebar;
         //vm.saveClassified = saveClassified;
         vm.saveEdit = saveEdit;
-        vm.classified = $state.params.classified;
+        vm.classifieds = classifiedsFactory.ref;
+        vm.classified = vm.classifieds.$getRecord($state.params.id);
         
         $timeout(function() {
             this.$mdSidenav('left').open();    
@@ -28,8 +29,10 @@
         }
         //function saveClassified(classified) {
         function saveEdit(classified) {
-            $scope.$emit('editSaved', 'Edit Saved!')
-            vm.sidenavOpen = false;
+            vm.classifieds.$save(vm.classified).then(function() {
+                $scope.$emit('editSaved', 'Edit Saved!')
+                vm.sidenavOpen = false;
+            });
         }
     });
 })();
