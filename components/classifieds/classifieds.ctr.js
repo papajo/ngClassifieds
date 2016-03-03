@@ -40,7 +40,6 @@
         }
                 
         function openSidebar() {
-            console.log('test');
             $state.go('classifieds.new');
         }
          function closeSidebar() {
@@ -81,10 +80,10 @@
         }
         function showToast(message) {
             $mdToast.show(
-                    $mdToast.simple()
-                      .content(message)
-                      .position('top, right')
-                      .hideDelay(3000)
+            $mdToast.simple()
+            .content(message)
+            .position('top, right')
+            .hideDelay(3000)
             ); 
         }
         function getCategories(classifieds) {

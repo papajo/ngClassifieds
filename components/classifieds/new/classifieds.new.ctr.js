@@ -13,13 +13,14 @@
         });
         
         $scope.$watch('vm.sidenavOpen', function(sidenav) {
+            console.log('test');
             if(sidenav == false) {
                 $mdSidenav('left')
                 .close()
                 .then(function() {
                     $state.go('classifieds');
                 })
-            }
+             }
         });
         function closeSidebar() {
             vm.sidenavOpen = false;
